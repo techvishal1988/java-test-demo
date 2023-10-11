@@ -1,0 +1,49 @@
+name: CI
+on:
+  push:
+    branches: ["master"]  
+env: 
+ ECR_REG: ghcr.io/techvishal1988/hello-world
+ 
+     
+jobs:
+  build:
+    name: Build and Pushing the Image
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{steps.build-image.outputs.image }}
+                      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+
+      - name: Build, tag, and push 
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+           
+        run: |
+          export PAT=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 
+          echo $PAT | docker login ghcr.io -u techvishal1988 --password-stdin 
+          docker build -t ghcr.io/techvishal1988/hello-world:$GITHUB_SHA .
+          docker push ghcr.io/techvishal1988/hello-world:$GITHUB_SHA
+          echo "::set-output name=image::$GITHUB_SHA"
+         
+         
+         
+         
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Fetching the deployment repo
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: build
+          workflow: CD
+          # workflow: CD-TESTING
+          repository: reflections-cloud-practice/gitops-application-environment/
+          token: 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
+          client-payload: '{"image_name": "${{ env.ECR_REG }}","image_tag": "${{needs.build.outputs.output1}}", "app_repo": "hello-world", "env_name": "dev"}'
