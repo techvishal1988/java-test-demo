@@ -27,6 +27,7 @@ jobs:
         run: |
           export PAT=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
           echo $PAT | docker login ghcr.io -u techvishal1988 --password-stdin 
+          echo $pwd
           docker build -t ghcr.io/techvishal1988/hello-world:$GITHUB_SHA .
           docker push ghcr.io/techvishal1988/hello-world:$GITHUB_SHA
           echo "::set-output name=image::$GITHUB_SHA"
