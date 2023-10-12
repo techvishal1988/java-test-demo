@@ -5,6 +5,7 @@ on:
 env: 
  ECR_REG: ghcr.io/techvishal1988/hello-world
 
+
      
 jobs:
   build:
