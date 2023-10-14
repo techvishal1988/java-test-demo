@@ -24,7 +24,7 @@ jobs:
            
         run: |
           export PAT=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
-          docker login ghcr.io -u techvishal1988 --password-stdin 
+          #docker login ghcr.io -u techvishal1988 --password-stdin 
           echo $pwd
           docker build -t ghcr.io/techvishal1988/hello-world1:$GITHUB_SHA .
           docker push ghcr.io/techvishal1988/hello-world1:$GITHUB_SHA
