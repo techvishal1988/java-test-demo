@@ -17,7 +17,7 @@ variables:
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
-  vmImageName: pool-demo-agent
+  pool: agent_new
 
 stages:
 - stage: Build
