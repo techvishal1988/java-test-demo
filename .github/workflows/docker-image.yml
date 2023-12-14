@@ -38,6 +38,7 @@ jobs:
           docker build -t ${{ env.ECR_REG }}:$GITHUB_SHA .
           docker push ${{ env.ECR_REG }}:$GITHUB_SHA
           echo "::set-output name=image::$GITHUB_SHA"
+
                                                    
   release:
     runs-on: ubuntu-latest
