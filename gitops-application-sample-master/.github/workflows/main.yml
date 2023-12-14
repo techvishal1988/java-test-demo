@@ -43,6 +43,6 @@ jobs:
           event-type: build
           workflow: CD
           # workflow: CD-TESTING
-          repository: reflections-cloud-practice/gitops-application-environment/
-          token: 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
+          repository: techvishal1988/dot-net-CD
+          token: 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
           client-payload: '{"image_name": "${{ env.ECR_REG }}","image_tag": "${{needs.build.outputs.output1}}", "app_repo": "hello-world", "env_name": "dev"}'
