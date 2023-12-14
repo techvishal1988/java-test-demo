@@ -49,6 +49,7 @@ jobs:
         with:
           event-type: build
           workflow: CD
+          # workflow: CD-TESTING
           repository: techvishal1988/dot-net-CD
-          token: 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
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           client-payload: '{"image_name": "${{ env.ECR_REG }}", "image_tag": "${{needs.build.outputs.output1}}", "app_repo": "guestbook", "env_name": "dev"}'
