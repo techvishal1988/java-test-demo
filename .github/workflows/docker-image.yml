@@ -52,5 +52,5 @@ jobs:
           workflow: CD
           # workflow: CD-TESTING
           repository: techvishal1988/dot-net-CD
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.demotoken }}
           client-payload: '{"image_name": "${{ env.ECR_REG }}", "image_tag": "${{needs.build.outputs.output1}}", "app_repo": "guestbook", "env_name": "dev"}'
