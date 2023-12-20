@@ -43,7 +43,8 @@ jobs:
         sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:123456/' deployment.yaml
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
-        git add deployment.yaml
+        cd ..
+        git add .
         git commit -m "Update Docker image tag in deployment.yaml"
         git push
 
