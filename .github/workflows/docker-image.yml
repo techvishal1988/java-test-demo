@@ -35,6 +35,7 @@ jobs:
         cd gitops-application-sample-master
         docker build -t $REGISTRY/$REPOSITORY:$GITHUB_SHA .
         docker push $REGISTRY/$REPOSITORY:$GITHUB_SHA
+        echo "::set-output name=image::$GITHUB_SHA"
     - name: Update kube config
       run: aws eks update-kubeconfig --name test-eks 
     - name: Deploy to EKS
