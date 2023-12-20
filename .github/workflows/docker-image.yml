@@ -32,11 +32,9 @@ jobs:
         REPOSITORY: java-api
         IMAGE_TAG: 1.1
       run: |
-        ls
-        pwd
         cd gitops-application-sample-master
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        docker build -t $REGISTRY/$REPOSITORY:$GITHUB_SHA .
+        docker push $REGISTRY/$REPOSITORY:$GITHUB_SHA
     - name: Update kube config
       run: aws eks update-kubeconfig --name test-eks 
     - name: Deploy to EKS
