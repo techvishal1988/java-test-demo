@@ -39,6 +39,7 @@ jobs:
     - name: Update deployment.yaml
       run: |
         cd   gitops-application-sample-master
+        ls
         sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:123456/' deployment.yaml
 
     - name: Update kube config
