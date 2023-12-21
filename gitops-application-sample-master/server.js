@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Welcome to GitOps Platform\n 2oth Dec- k8s');
+  res.send('Welcome to GitOps Platform\n 2oth Dec- k8s what is happeining');
 });
 
 app.listen(PORT, HOST);
