@@ -43,7 +43,6 @@ jobs:
         cd   gitops-application-sample-master
         ls
         sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
-        run: |
         ls
         pwd
         git config --global user.email "dev@demo.com"
