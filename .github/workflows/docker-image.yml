@@ -41,7 +41,7 @@ jobs:
     - name: Update deployment.yaml
       run: |
         cd gitops-application-sample-master
-        sed  -e '/java-api/ s/:e80ebcf0437bcf349dd201cd3d4891de665e740c.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
+        sed  -e '/java-api/ s/:e80ebcf0437bcf349dd201cd3d4891de665e740c.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> /home/runner/work/java-test/java-test/gitops-application-sample-master/
         pwd
         cat deployment.yaml
         cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
