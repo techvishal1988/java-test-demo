@@ -41,7 +41,8 @@ jobs:
     - name: Update deployment.yaml
       run: |
         cd gitops-application-sample-master
-        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
+        sed  -e '/java-api/ s/:e80ebcf0437bcf349dd201cd3d4891de665e740c.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
+        ls
            
     - name: Update kube config
       run: aws eks update-kubeconfig --name test-eks 
