@@ -41,12 +41,16 @@ jobs:
     - name: Update deployment.yaml
       run: |
         cd gitops-application-sample-master
-        sed  -e '/java-api/ s/:e80ebcf0437bcf349dd201cd3d4891de665e740c.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml > /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
+        sed  -e '/java-api/ s/:e80ebcf0437bcf349dd201cd3d4891de665e740c.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
         pwd
         cat deployment.yaml
         cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
         ls
-           
+        git config --global user.email "dev@demo.com"
+        git config --global user.name "demodev"
+        git add .
+        git commit -m "Update to new version"
+        git push         
     - name: Update kube config
       run: aws eks update-kubeconfig --name test-eks 
     - name: Deploy to EKS
