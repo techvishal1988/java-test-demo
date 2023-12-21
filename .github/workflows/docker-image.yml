@@ -40,18 +40,9 @@ jobs:
       run: echo "::set-output name=tag::${{ github.sha }}"
     - name: Update deployment.yaml
       run: |
-        ls
         cd gitops-application-sample-master
-        ls
-        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
-        ls
-        cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
-        git config --global user.email "dev@demo.com"
-        git config --global user.name "demodev"
-        git status
-        git add .
-        git commit -m "Update to new version"
-        git push   
+        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
+           
     - name: Update kube config
       run: aws eks update-kubeconfig --name test-eks 
     - name: Deploy to EKS
