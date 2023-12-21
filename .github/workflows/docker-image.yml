@@ -40,7 +40,7 @@ jobs:
         cd gitops-application-sample-master
         ls
         pwd
-        sed -i '/java-api/ s/:758d4c0cc86d839d15967b02ff1af06758d7ca70.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
+        sed -i '/java-api/ s/:.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml 
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
         git add .
