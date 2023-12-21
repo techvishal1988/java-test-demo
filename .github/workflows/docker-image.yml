@@ -33,27 +33,9 @@ jobs:
         IMAGE_TAG: 1.1
       run: |
         cd gitops-application-sample-master
-        docker build -t $REGISTRY/$REPOSITORY:$GITHUB_SHA .
-        docker push $REGISTRY/$REPOSITORY:$GITHUB_SHA
-    - name: Extract Docker image tag
-      id: extract-tag
-      run: echo "::set-output name=tag::${{ github.sha }}"
-  build:
-    name: Build and Pushing the Image
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2 
-    - name: Update deployment.yaml
-      run: |
-        cd gitops-application-sample-master
-        sed  -e '/java-api/ s/:ab8b0de06f473d2bc23b78a9421c17076c227858.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
-        git config --global user.email "dev@demo.com"
-        git config --global user.name "demodev"
-        git add .
-        git commit -m "Update to new version"
-        git push         
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=tag::${{ IMAGE_TAG }}"
     - name: Update kube config
       run: aws eks update-kubeconfig --name test-eks 
     - name: Deploy to EKS
