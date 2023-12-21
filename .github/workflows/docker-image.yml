@@ -40,7 +40,7 @@ jobs:
       run: |
         cd   gitops-application-sample-master
         ls
-        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:$GITHUB_SHA/' deployment.yaml
+        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:$image/' deployment.yaml
     - name: Commiting deployment file changes
       run: |
         git config --global user.email "dev@demo.com"
