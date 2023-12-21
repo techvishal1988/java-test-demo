@@ -38,14 +38,17 @@ jobs:
     - name: Extract Docker image tag
       id: extract-tag
       run: echo "::set-output name=tag::${{ github.sha }}"
+  build:
+    name: Build and Pushing the Image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2 
     - name: Update deployment.yaml
       run: |
         cd gitops-application-sample-master
-        sed  -e '/java-api/ s/:ab8b0de06f473d2bc23b78a9421c17076c227858.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> deployment.yaml1
-        pwd
-        cat deployment1.yaml
-        cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
-        ls
+        sed  -e '/java-api/ s/:ab8b0de06f473d2bc23b78a9421c17076c227858.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
         git config --global user.email "dev@demo.com"
         git config --global user.name "demodev"
         git add .
