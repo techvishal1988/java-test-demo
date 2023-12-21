@@ -40,6 +40,7 @@ jobs:
       run: echo "::set-output name=tag::${{ github.sha }}"
     - name: Update deployment.yaml
       run: |
+        cd gitops-application-sample-master
         ls
         pwd
         cd /home/runner/work/java-test/java-test/gitops-application-sample-master/
