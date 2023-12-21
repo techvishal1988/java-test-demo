@@ -41,9 +41,9 @@ jobs:
     - name: Update deployment.yaml
       run: |
         cd gitops-application-sample-master
-        sed  -e '/java-api/ s/:e80ebcf0437bcf349dd201cd3d4891de665e740c.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> /home/runner/work/java-test/java-test/gitops-application-sample-master/
+        sed  -e '/java-api/ s/:ab8b0de06f473d2bc23b78a9421c17076c227858.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml >> deployment.yaml1
         pwd
-        cat deployment.yaml
+        cat deployment1.yaml
         cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
         ls
         git config --global user.email "dev@demo.com"
