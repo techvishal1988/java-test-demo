@@ -42,12 +42,10 @@ jobs:
       run: |
         ls
         pwd
-        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
-        ls
-        cd home/runner/work/java-test/java-test/gitops-application-sample-master/
+        cd /home/runner/work/java-test/java-test/gitops-application-sample-master/
+        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
         ls
         cat deployment.yaml
-        cd /home/runner/work/java-test/java-test
         git config --global user.email "dev@demo.com"
         git config --global user.name "demodev"
         git status
