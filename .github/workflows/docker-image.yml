@@ -30,8 +30,8 @@ jobs:
       run: |   
         cd gitops-application-sample-master
         ls
-        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ github.sha }} .
-        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ github.sha }}
+        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:${{ github.sha }} .
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:${{ github.sha }}
     - name: Extract Docker image tag
       id: extract-tag
       run: echo "::set-output name=tag::${{ github.sha }}"
@@ -40,7 +40,8 @@ jobs:
         cd gitops-application-sample-master
         ls
         pwd
-        sed -i '/java-api/ s/:*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml 
+        sed -i 's|image: abc:1.1|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:${{ steps.extract-tag.outputs.tag }}|g' deployment.yaml
+        # sed -i '/java-api/ s/:*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml 
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
         git add .
