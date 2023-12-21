@@ -36,7 +36,9 @@ jobs:
       run: echo "::set-output name=tag::${{ github.sha }}"
     - name: Update deployment.yaml
       run: |
-        sed -i 's|image: java-api:1.1|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ steps.extract-tag.outputs.tag }}|g' deployment.yaml
+        ls
+        pwd
+        sed -i 's|image: java-api:1.1|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ steps.extract-tag.outputs.tag }}|g' /gitops-application-sample-master/deployment.yaml
 
     - name: Commit and push changes
       run: |
