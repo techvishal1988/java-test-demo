@@ -27,19 +27,16 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push docker image to Amazon ECR
-      env:
-        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REPOSITORY: java-api
-      run: |
+      run: |   
         cd gitops-application-sample-master
-        docker build -t 485229547579.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ github.sha }} .
-        docker push 485229547579.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ github.sha }}
+        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ github.sha }} .
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ github.sha }}
     - name: Extract Docker image tag
       id: extract-tag
       run: echo "::set-output name=tag::${{ github.sha }}"
     - name: Update deployment.yaml
       run: |
-        sed -i 's|image: java-api:1.1|image: 485229547579.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ steps.extract-tag.outputs.tag }}|g' deployment.yaml
+        sed -i 's|image: java-api:1.1|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ steps.extract-tag.outputs.tag }}|g' deployment.yaml
 
     - name: Commit and push changes
       run: |
