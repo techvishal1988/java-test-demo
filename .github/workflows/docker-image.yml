@@ -46,7 +46,8 @@ jobs:
         cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
         ls
         pwd
-        cd /home/runner/work/java-test/java-test/gitops-application-sample-master
+        cp /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml /gitops-application-sample-master
+        cd gitops-application-sample-master
         git config --global user.email "dev@demo.com"
         git config --global user.name "demodev"
         git status
