@@ -43,7 +43,8 @@ jobs:
         ls
         pwd
         sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
-        cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
+        ls
+        cat /home/runner/work/java-test/java-test/deployment.yaml
         ls
         pwd
         cd /home/runner/work/java-test/java-test/gitops-application-sample-master
