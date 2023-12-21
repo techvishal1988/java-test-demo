@@ -18,3 +18,23 @@ spec:
         name: java-api
         ports:
         - containerPort: 8080
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-api
+spec:
+  replicas: 3
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: java-api
+  template:
+    metadata:
+      labels:
+        app: java-api
+    spec:
+      containers:
+      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:d47755b6e31de0f34962e8a12c44c3c3e2aacfa2
+        name: java-api
+        ports:
+        - containerPort: 8080
