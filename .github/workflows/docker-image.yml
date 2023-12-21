@@ -46,9 +46,10 @@ jobs:
         ls
         pwd
         cd /home/runner/work/java-test/java-test/gitops-application-sample-master
+        ls
         git config --global user.email "dev@demo.com"
         git config --global user.name "demodev"
-        git add .
+        git add deployment.yaml 
         git commit -m "Update to new version"
         git push   
     - name: Update kube config
