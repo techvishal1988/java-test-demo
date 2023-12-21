@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:0033f4e9f7c7b57eff4bc23f5ad618a00086c5d2
+  name: java-api
 spec:
-  replicas: 3
-  revisionHistoryLimit: 3
+  replicas: 2
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app:0033f4e9f7c7b57eff4bc23f5ad618a00086c5d2
+      app: java-api
   template:
     metadata:
       labels:
-        app:0033f4e9f7c7b57eff4bc23f5ad618a00086c5d2
+        app: java-api
     spec:
       containers:
-      - image:0033f4e9f7c7b57eff4bc23f5ad618a00086c5d2
-        name:0033f4e9f7c7b57eff4bc23f5ad618a00086c5d2
+      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/abc:1.1
+        name: java-api
         ports:
-        - containerPort: 8080
+        - containerPort: 80
