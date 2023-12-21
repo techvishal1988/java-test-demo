@@ -14,67 +14,7 @@ spec:
         app: java-api
     spec:
       containers:
-      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:e80ebcf0437bcf349dd201cd3d4891de665e740c
-        name: java-api
-        ports:
-        - containerPort: 8080
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: java-api
-spec:
-  replicas: 3
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: java-api
-  template:
-    metadata:
-      labels:
-        app: java-api
-    spec:
-      containers:
-      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:d47755b6e31de0f34962e8a12c44c3c3e2aacfa2
-        name: java-api
-        ports:
-        - containerPort: 8080
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: java-api
-spec:
-  replicas: 3
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: java-api
-  template:
-    metadata:
-      labels:
-        app: java-api
-    spec:
-      containers:
-      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:48f744ff3c355ccd914308972c24900c365ca68d
-        name: java-api
-        ports:
-        - containerPort: 8080
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: java-api
-spec:
-  replicas: 3
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: java-api
-  template:
-    metadata:
-      labels:
-        app: java-api
-    spec:
-      containers:
-      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:d47755b6e31de0f34962e8a12c44c3c3e2aacfa2
+      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:ab8b0de06f473d2bc23b78a9421c17076c227858
         name: java-api
         ports:
         - containerPort: 8080
