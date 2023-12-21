@@ -44,7 +44,7 @@ jobs:
         pwd
         sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}/' /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
         ls
-        cat deployment.yaml
+        cat /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
         git config --global user.email "dev@demo.com"
         git config --global user.name "demodev"
         git status
