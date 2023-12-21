@@ -35,12 +35,14 @@ jobs:
         cd gitops-application-sample-master
         docker build -t $REGISTRY/$REPOSITORY:$GITHUB_SHA .
         docker push $REGISTRY/$REPOSITORY:$GITHUB_SHA
-        echo "::set-output name=image::$GITHUB_SHA"
+    - name: Extract Docker image tag
+      id: extract-tag
+      run: echo "::set-output name=tag::${{ github.sha }}"
     - name: Update deployment.yaml
       run: |
         cd   gitops-application-sample-master
         ls
-        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:$image/' deployment.yaml
+        sed  -e '/java-api/ s/:c5270e8905b93f1eaf05095686331f8bf13fc3df.*$/:${{ steps.extract-tag.outputs.tag }}|g' deployment.yaml
     - name: Commiting deployment file changes
       run: |
         git config --global user.email "dev@demo.com"
