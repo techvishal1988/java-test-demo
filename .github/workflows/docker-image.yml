@@ -40,8 +40,8 @@ jobs:
         cd gitops-application-sample-master
         ls
         pwd
-        sed -e 's|image: java-api:1.1|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ steps.extract-tag.outputs.tag }}|g' /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
-        cat deployment.yaml
+        sed -e '/java-api/ s/:1.1.*$/:${{ steps.extract-tag.outputs.tag }}/' deployment.yaml
+       #sed -e 's|image: java-api:1.1|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/java-api:${{ steps.extract-tag.outputs.tag }}|g' /home/runner/work/java-test/java-test/gitops-application-sample-master/deployment.yaml
 
     - name: Commit and push changes
       run: |
