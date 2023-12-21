@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: java-api
 spec:
-  replicas: 1
-  revisionHistoryLimit: 1
+  replicas: 2
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: java-api
@@ -14,7 +14,7 @@ spec:
         app: java-api
     spec:
       containers:
-      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:c5270e8905b93f1eaf05095686331f8bf13fc3df
+      - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/java-api:e80ebcf0437bcf349dd201cd3d4891de665e740c
         name: java-api
         ports:
         - containerPort: 8080
