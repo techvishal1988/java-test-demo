@@ -30,8 +30,8 @@ jobs:
       run: |   
         cd gitops-application-sample-master
         ls
-        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:${{ github.sha }} .
-        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:${{ github.sha }}
+        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:latest-${{ github.sha }} .
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:latest-${{ github.sha }}
     - name: Extract Docker image tag
       id: extract-tag
       run: echo "::set-output name=tag::${{ github.sha }}"
