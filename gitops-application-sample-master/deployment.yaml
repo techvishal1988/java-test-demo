@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: java-api
 spec:
-  replicas: 2
-  revisionHistoryLimit: 2
+  replicas: 1
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: java-api
