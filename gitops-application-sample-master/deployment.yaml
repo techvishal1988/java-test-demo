@@ -17,4 +17,4 @@ spec:
       - image: 485229547579.dkr.ecr.ap-south-1.amazonaws.com/abc:latest-93aafe3baad1a943a5b122a96b83dc7bcf460f1e
         name: java-api
         ports:
-        - containerPort: 80
+        - containerPort: 8080
