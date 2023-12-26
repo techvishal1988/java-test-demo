@@ -14,7 +14,7 @@ spec:
         app: java-api
     spec:
       containers:
-      - image: 485229547579.dkr.ecr.ap-southeast-1.amazonaws.com/abcd:latest-089be3dafbba09da98606ea13e002fd6584d5453
+      - image: 485229547579.dkr.ecr.ap-southeast-1.amazonaws.com/abcd:latest-35ca82373aa1bce31ffc83d3b43dba9f6cc195d6
         name: java-api
         ports:
         - containerPort: 8080
