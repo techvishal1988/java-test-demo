@@ -7,7 +7,6 @@
     />
 </p>
 <hr>
-
 Create a simple nodeJs application and deploy it onto a docker container.
 
 1. Create a working directory
