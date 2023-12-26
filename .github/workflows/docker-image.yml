@@ -30,8 +30,8 @@ jobs:
       run: |   
         cd gitops-application-sample-master
         ls
-        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:latest-${{ github.sha }} .
-        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abc:latest-${{ github.sha }}
+        docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abcd:latest-${{ github.sha }} .
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abcd:latest-${{ github.sha }}
     - name: Extract Docker image tag
       id: extract-tag
       run: echo "::set-output name=tag::${{ github.sha }}"
@@ -40,7 +40,7 @@ jobs:
         cd gitops-application-sample-master
         ls
         pwd
-        sed  -i '/abc/ s/:latest-.*$/:latest-${{ steps.extract-tag.outputs.tag }}/' deployment.yaml 
+        sed  -i '/abcd/ s/:latest-.*$/:latest-${{ steps.extract-tag.outputs.tag }}/' deployment.yaml 
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
         git add .
@@ -51,5 +51,5 @@ jobs:
     - name: Deploy to EKS
       run: |
         cd gitops-application-sample-master
-        kubectl apply -f deployment.yaml -n demo
-        kubectl apply -f service.yaml -n demo
+        kubectl apply -f deployment.yaml -n dev
+        kubectl apply -f service.yaml -n dev
