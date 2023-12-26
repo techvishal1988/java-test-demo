@@ -37,12 +37,12 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'RSI_RealWearproject_Subscription.(9710dc1c-311d-49f7-af70-670fe90131d2)'
-    appType: 'webAppContainer'
-    WebAppName: 'v2v2app'
-    DockerNamespace: 'atest4r'
-    DockerRepository: '577f5fc0cf632df2a8fdd8366329c05a52bc072aa95c46616617f812ad2fb78b'
-    DockerImageTag: '533'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'RSI_RealWearproject_Subscription.(9710dc1c-311d-49f7-af70-670fe90131d2)'
+        appType: 'webAppContainer'
+        WebAppName: 'v2v2app'
+        DockerNamespace: 'atest4r'
+        DockerRepository: '577f5fc0cf632df2a8fdd8366329c05a52bc072aa95c46616617f812ad2fb78b'
+        DockerImageTag: '533'
