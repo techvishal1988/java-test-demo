@@ -1,6 +1,6 @@
 name: Java app deploy to EKS
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
 jobs:
   build:
