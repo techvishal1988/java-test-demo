@@ -32,12 +32,7 @@ jobs:
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/abcd:latest-${{ github.sha }}
     - name: Extract Docker image tag
       id: extract-tag
-      run: echo "::set-output name=tag::${{ github.sha }}"
-  deploy-development:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event_name == 'pull_request' 
-    steps:
+      run: echo "::set-output name=tag::${{ github.sha }}" 
     - name: Fetching the deployment repo
       run: |
         cd gitops-application-sample-master
