@@ -98,8 +98,7 @@ EXPOSE 3000
 CMD [ "node", "server.js" ]
 
 ```
-7. Create **.dockerignore** file with following content
- 
+7. Create **.dockerignore** file with following content 
 ```
 node_modules
 npm-debug.log
