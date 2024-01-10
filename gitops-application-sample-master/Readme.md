@@ -158,6 +158,5 @@ output:
         />
       </p>
     
-I hope this tutorial helped you get up and running a simple Node.js application on Docker container.
-    
+I hope this tutorial helped you get up and running a simple Node.js application on Docker container.    
  
