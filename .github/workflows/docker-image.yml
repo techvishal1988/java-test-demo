@@ -36,7 +36,7 @@ jobs:
   deploy-development:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'pull_request'
     environment: development
     steps:
     - name: Fetching the deployment repo
