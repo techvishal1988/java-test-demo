@@ -1,7 +1,7 @@
 name: Java app deploy to EKS
 on:
   push:
-    branches: [ "feature-branch" ]
+    branches: [ "vishal1" ]
 jobs:
   build:
     runs-on: ubuntu-latest
