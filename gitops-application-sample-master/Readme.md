@@ -142,7 +142,6 @@ npm-debug.log
       
 12. Lets know where it is running on
     > docker logs <container_id>
-    
 ```
 output: 
     Example app listening on port 3000!
